@@ -4,9 +4,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Algos", "Algos", "{30C39D1F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApis", "WebApis", "{A4982427-0F79-4767-8AFE-6EE76B3FCE00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberSort", "Algos\NumberSort\NumberSort.csproj", "{C1535457-0FA0-4257-A2CF-1B788A61CC42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C1535457-0FA0-4257-A2CF-1B788A61CC42} = {30C39D1F-EA72-4594-ADFB-2E18202B79EE}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1535457-0FA0-4257-A2CF-1B788A61CC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1535457-0FA0-4257-A2CF-1B788A61CC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1535457-0FA0-4257-A2CF-1B788A61CC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1535457-0FA0-4257-A2CF-1B788A61CC42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

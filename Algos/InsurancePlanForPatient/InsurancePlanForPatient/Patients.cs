@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+namespace InsurancePlanForPatient;
+
 internal class Patients
 {
     public int PatientId { get; set; }

@@ -1,6 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using CsvUtility;
 using Serilog;
 
 namespace ColorShapes;
@@ -18,14 +17,14 @@ public class App
             var inputfilePath = Path.Combine(path, INPUT_CSV);
             var stopWatch = Stopwatch.StartNew();
 
-            var colorShapes = await CSVHelper.GetCSV(inputfilePath);
-            if (colorShapes != null && colorShapes.Any())
+            var colorShapes = await CsvUtilityHelper.GetDataFromInputCsv<ColorShape>(inputfilePath);
+            if (colorShapes.Any())
             {
                 Log.Information("Colorshapes CSV loaded in memory");
                 var orderedColorShapes = colorShapes.EquidistantOrderByColor();
 
                 var outputFilePath = Path.Combine(path, OUTPUT_CSV);
-                CSVHelper.WriteOutPutCsv(outputFilePath, orderedColorShapes);
+                CsvUtilityHelper.WriteOutPutCsv<ColorShape>(outputFilePath, orderedColorShapes.ToArray());
 
                 stopWatch.Stop();
                 Log.Information("Console ran for {0}.", stopWatch.Elapsed);

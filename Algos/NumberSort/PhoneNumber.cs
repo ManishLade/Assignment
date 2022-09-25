@@ -1,6 +1,6 @@
 ﻿namespace NumberSort;
 
-public class PhoneNumbers
+public class PhoneNumberCsv
 {
     public int PhoneNumber { get; set; }
 }

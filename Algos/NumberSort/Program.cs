@@ -1,26 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
-using System.Diagnostics;
 using NumberSort;
+using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
-var path = Directory.GetCurrentDirectory();
-var inputCsvPath = Path.Combine(path, "PhoneNumbers-8-digits.csv");
+var services = new ServiceCollection();
+services.AddTransient<App>();
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("log-app.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
-var data = CsvHelperUtility.GetDataFromInputCsv(inputCsvPath).ToArray();
-if (data == null) return;
-
-var numbers = data.Select(x => x.PhoneNumber).ToArray();
-var stopWatch = Stopwatch.StartNew();
-//calling extension method to sort array 
-var sortedArray = numbers.SortArray(0, numbers.Length - 1);
-stopWatch.Stop();
-Console.WriteLine($"Manual Quick sort execution time:{stopWatch.Elapsed.TotalSeconds}");
-
-var stopWatch2 = Stopwatch.StartNew();
-//calling built in to sort array 
-Array.Sort(numbers);
-stopWatch2.Stop();
-Console.WriteLine($"Built in Quick sort execution time:{stopWatch.Elapsed.TotalSeconds}");
-
-var outputFilePath = Path.Combine(path, "OUTPUT.csv");
-CsvHelperUtility.WriteOutPutCsv(outputFilePath, sortedArray);
+Log.Information("Console started");
+var serviceProvider = services.BuildServiceProvider();
+await serviceProvider.GetService<App>().RunAsync();

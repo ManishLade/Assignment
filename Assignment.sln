@@ -36,6 +36,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UrlShortner.Api", "UrlShort
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner.Api", "WebApis\UrlShortner.Api\UrlShortner.Api\UrlShortner.Api.csproj", "{1D11A252-D3D6-4512-89C6-06DBF0ADDA3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner.Data", "WebApis\UrlShortner.Api\UrlShortner.Data\UrlShortner.Data.csproj", "{837E9FA1-6992-445A-9CE9-6367162B69F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner.Infrastructure", "WebApis\UrlShortner.Api\UrlShortner.Infrastructure\UrlShortner.Infrastructure.csproj", "{F31D3573-B1ED-4FF7-834E-38FF6115F7D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +62,8 @@ Global
 		{596C0BAA-66B0-483A-976D-52C57F512AE5} = {30C39D1F-EA72-4594-ADFB-2E18202B79EE}
 		{D61B2197-5C34-4A19-9EAA-97C7D08DD908} = {A4982427-0F79-4767-8AFE-6EE76B3FCE00}
 		{1D11A252-D3D6-4512-89C6-06DBF0ADDA3A} = {D61B2197-5C34-4A19-9EAA-97C7D08DD908}
+		{837E9FA1-6992-445A-9CE9-6367162B69F6} = {D61B2197-5C34-4A19-9EAA-97C7D08DD908}
+		{F31D3573-B1ED-4FF7-834E-38FF6115F7D8} = {D61B2197-5C34-4A19-9EAA-97C7D08DD908}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C1535457-0FA0-4257-A2CF-1B788A61CC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -100,5 +106,13 @@ Global
 		{1D11A252-D3D6-4512-89C6-06DBF0ADDA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D11A252-D3D6-4512-89C6-06DBF0ADDA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D11A252-D3D6-4512-89C6-06DBF0ADDA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837E9FA1-6992-445A-9CE9-6367162B69F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837E9FA1-6992-445A-9CE9-6367162B69F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837E9FA1-6992-445A-9CE9-6367162B69F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837E9FA1-6992-445A-9CE9-6367162B69F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31D3573-B1ED-4FF7-834E-38FF6115F7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31D3573-B1ED-4FF7-834E-38FF6115F7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31D3573-B1ED-4FF7-834E-38FF6115F7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31D3573-B1ED-4FF7-834E-38FF6115F7D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

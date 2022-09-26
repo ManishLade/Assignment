@@ -7,7 +7,7 @@ namespace ColorShapes;
 public class App
 {
     private const string INPUT_CSV = "ColorShapes.csv";
-    private const string OUTPUT_CSV = "Output.csv";
+    private const string OUTPUT_CSV = "ColorShapesOutput.csv";
 
     internal async Task RunAsync()
     {

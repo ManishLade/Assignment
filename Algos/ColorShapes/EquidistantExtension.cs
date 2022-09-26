@@ -13,13 +13,11 @@ public static class EquidistantExtension
     {
         var colors = new List<ColorShape>();
         var colorGroup = colorShapes.GroupBy(x => x.Color).OrderByDescending(x => x.Count());
-        var colorGroupCount = colorGroup.Count();
 
         foreach (var (item, index) in colorGroup.Select((item, i) => (item, i)))
             if (index == 0)
-            {
-                item.ToList().ForEach(y => colors.Add(y));
-            }
+                foreach (var y in item)
+                    colors.Add(y);
             else
             {
                 var arrList = item.ToArray();

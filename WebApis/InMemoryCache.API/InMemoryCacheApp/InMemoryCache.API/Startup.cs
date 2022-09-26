@@ -8,8 +8,8 @@ namespace InMemoryCache.API;
 
 public class Startup
 {
-    private const string _swaggerDocVersion = "v1";
-    private const string _swaggerDocTitle = "InMemoryCache.API";
+    private const string SwaggerDocVersion = "v1";
+    private const string SwaggerDocTitle = "InMemoryCache.API";
 
     public Startup(IConfiguration configuration)
     {
@@ -28,8 +28,8 @@ public class Startup
 
         services.AddSwaggerGen(x =>
         {
-            x.SwaggerDoc(_swaggerDocVersion,
-                new OpenApiInfo { Title = _swaggerDocTitle, Version = _swaggerDocVersion });
+            x.SwaggerDoc(SwaggerDocVersion,
+                new OpenApiInfo { Title = SwaggerDocTitle, Version = SwaggerDocVersion });
         });
 
         #endregion
@@ -47,7 +47,7 @@ public class Startup
         #region SWAGGER
 
         app.UseSwagger();
-        app.UseSwaggerUI(x => { x.SwaggerEndpoint("v1/swagger.json", $"{_swaggerDocTitle} {_swaggerDocVersion}"); });
+        app.UseSwaggerUI(x => { x.SwaggerEndpoint("v1/swagger.json", $"{SwaggerDocTitle} {SwaggerDocVersion}"); });
 
         #endregion
 

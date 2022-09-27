@@ -1,4 +1,5 @@
-﻿using Lookup.Service;
+﻿using System.Net;
+using Lookup.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lookup.Api.Controllers;
@@ -19,8 +20,8 @@ public class StateLookupController : ControllerBase
     public IActionResult Get(string zipCode)
     {
         var result = _lookupService.GetStateByZipCode(zipCode);
-        return result.StatusCode == System.Net.HttpStatusCode.OK 
-            ? Ok(result.State) 
+        return result.StatusCode == HttpStatusCode.OK
+            ? Ok(result.State)
             : StatusCode((int)result.StatusCode, result.ErrorMessage);
     }
 }

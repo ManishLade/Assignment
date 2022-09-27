@@ -7,10 +7,10 @@ using UrlShortner.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration[@"ConnectionStrings:urlshortener"]; 
-builder.Services.AddDbContext<LongUrlContext>(options => 
-                        options.UseSqlServer(connectionString,
-                            b => b.MigrationsAssembly("UrlShortner.Api")));
+var connectionString = builder.Configuration[@"ConnectionStrings:urlshortener"];
+builder.Services.AddDbContext<LongUrlContext>(options =>
+    options.UseSqlServer(connectionString,
+        b => b.MigrationsAssembly("UrlShortner.Api")));
 builder.Services.AddScoped<ILongUrlContext>(provider => provider.GetService<LongUrlContext>());
 builder.Services.AddScoped<IUrlShortnerService, UrlShortnerService>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

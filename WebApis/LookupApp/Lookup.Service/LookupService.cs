@@ -1,7 +1,7 @@
-﻿using Lookup.Service.Models;
+﻿using System.Net;
+using Lookup.Service.Models;
 using Microsoft.Extensions.Options;
 using RestSharp;
-using System.Net;
 
 namespace Lookup.Service;
 
@@ -39,7 +39,7 @@ public class LookupService : ILookupService
                         lookupResponse.State = response?.Data?.ZipCode?.State;
                         lookupResponse.StatusCode = HttpStatusCode.OK;
                     }
-                    else if(response?.Data?.ZipCode?.Error?.Description != null)
+                    else if (response?.Data?.ZipCode?.Error?.Description != null)
                     {
                         lookupResponse.StatusCode = HttpStatusCode.BadRequest;
                         lookupResponse.ErrorMessage = response?.Data?.ZipCode?.Error?.Description;

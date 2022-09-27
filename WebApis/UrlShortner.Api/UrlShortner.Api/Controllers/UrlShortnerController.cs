@@ -15,9 +15,8 @@ namespace UrlShortner.Api.Controllers;
 [Route("/")]
 public class UrlShortnerController : ControllerBase
 {
-    private readonly IUrlShortnerService _urlShortnerService;
     private readonly IMapper _mapper;
-    public IConfiguration Configuration { get; set; }
+    private readonly IUrlShortnerService _urlShortnerService;
 
     public UrlShortnerController(IUrlShortnerService urlShortnerService,
         IMapper mapper)
@@ -25,6 +24,8 @@ public class UrlShortnerController : ControllerBase
         _urlShortnerService = urlShortnerService;
         _mapper = mapper;
     }
+
+    public IConfiguration Configuration { get; set; }
 
     [HttpPost("urls")]
     public async Task<IActionResult> PostLongUrl(LongUrlDto longUrlDto)
@@ -36,9 +37,9 @@ public class UrlShortnerController : ControllerBase
             return NotFound();
 
         var longUrl = _mapper.Map<LongUrl>(longUrlDto);
-        int id = await _urlShortnerService.SaveUrl(longUrl);
-        string shortUrl = _urlShortnerService.IdToShortUrl(id);
-        return CreatedAtAction(nameof(ShortUrlToLongUrl), new { shortUrl = shortUrl }, shortUrl);
+        var id = await _urlShortnerService.SaveUrl(longUrl);
+        var shortUrl = _urlShortnerService.IdToShortUrl(id);
+        return CreatedAtAction(nameof(ShortUrlToLongUrl), new { shortUrl }, shortUrl);
     }
 
     [HttpGet("redirect/{*shortUrl}")]
@@ -46,45 +47,41 @@ public class UrlShortnerController : ControllerBase
     public IActionResult RedirectToLongUrl(string shortUrl)
     {
         LongUrl longUrl = null;
-        int id = _urlShortnerService.ShortUrlToId(shortUrl);
+        var id = _urlShortnerService.ShortUrlToId(shortUrl);
         if (id == 0) return NotFound();
 
         longUrl = _urlShortnerService.RetriveFromDatabase(id);
 
         return RedirectPermanent(longUrl.Url);
     }
-    
+
     [HttpGet("{*shortUrl}")]
     public IActionResult ShortUrlToLongUrl(string shortUrl)
     {
-        int id = _urlShortnerService.ShortUrlToId(shortUrl);
+        var id = _urlShortnerService.ShortUrlToId(shortUrl);
 
-        if (id == 0) {
-            return NotFound();
-        }
+        if (id == 0) return NotFound();
 
-        LongUrl longUrl = _urlShortnerService.RetriveFromDatabase(id);
+        var longUrl = _urlShortnerService.RetriveFromDatabase(id);
 
-        if (longUrl == null) {
-            return NotFound();
-        }
+        if (longUrl == null) return NotFound();
         return RedirectPermanent(longUrl.Url);
     }
-    
+
     private bool CheckUrl(string url)
     {
         Uri uriResult;
-        bool result = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
-                      && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+        var result = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+                     && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         return result;
     }
 
     private bool CallUrl(string url)
     {
-        WebRequest request = HttpWebRequest.Create(url);
+        var request = WebRequest.Create(url);
         try
         {
-            WebResponse response = request.GetResponse();
+            var response = request.GetResponse();
             return true;
         }
         catch (Exception e)

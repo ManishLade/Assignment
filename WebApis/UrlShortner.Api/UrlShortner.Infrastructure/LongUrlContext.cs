@@ -1,15 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using UrlShortner.Data;
+using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace UrlShortner.Infrastructure;
 
-public class LongUrlContext : DbContext
+public interface ILongUrlContext
+{
+    Microsoft.EntityFrameworkCore.DbSet<LongUrl> longUrls { get; set; }
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+    EntityEntry Add(object entity);
+}
+
+public class LongUrlContext : DbContext, ILongUrlContext
 {
     public LongUrlContext(DbContextOptions<LongUrlContext> options) : base(options)
     {
     }
 
-    public DbSet<LongUrl> longUrls { get; set; }
+    public Microsoft.EntityFrameworkCore.DbSet<LongUrl> longUrls { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

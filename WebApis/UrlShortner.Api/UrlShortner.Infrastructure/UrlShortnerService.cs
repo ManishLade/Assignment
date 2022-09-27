@@ -13,10 +13,10 @@ public interface IUrlShortnerService
 
 public class UrlShortnerService : IUrlShortnerService
 {
-    private readonly LongUrlContext _context;
+    private readonly ILongUrlContext _context;
     private int shortUrlLength = 6;
 
-    public UrlShortnerService(LongUrlContext context)
+    public UrlShortnerService(ILongUrlContext context)
     {
         _context = context;
     }

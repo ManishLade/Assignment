@@ -11,6 +11,7 @@ var connectionString = builder.Configuration[@"ConnectionStrings:urlshortener"];
 builder.Services.AddDbContext<LongUrlContext>(options => 
                         options.UseSqlServer(connectionString,
                             b => b.MigrationsAssembly("UrlShortner.Api")));
+builder.Services.AddScoped<ILongUrlContext>(provider => provider.GetService<LongUrlContext>());
 builder.Services.AddScoped<IUrlShortnerService, UrlShortnerService>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddCors(c =>

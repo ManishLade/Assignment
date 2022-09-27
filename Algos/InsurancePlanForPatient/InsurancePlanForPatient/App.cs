@@ -15,7 +15,7 @@ public class App
         var insurancePlanForPatientDatas = GetEfficientInsurancePlanForPatient(patients.Result, insurancePlans.Result);
 
         var outputPath = Path.Combine(path, "EfficientInsurancePlans.csv");
-        CsvUtilityHelper.WriteOutPutCsv<InsurancePlanForPatientData>(outputPath, insurancePlanForPatientDatas.ToArray());
+        CsvUtilityHelper.WriteOutPutCsv(outputPath, insurancePlanForPatientDatas.ToArray());
     }
 
     private static List<InsurancePlanForPatientData> GetEfficientInsurancePlanForPatient(IEnumerable<Patients> patients,

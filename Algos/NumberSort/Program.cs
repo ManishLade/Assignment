@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using NumberSort;
+
 using Microsoft.Extensions.DependencyInjection;
+using NumberSort;
 using Serilog;
 
 var services = new ServiceCollection();

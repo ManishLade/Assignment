@@ -6,7 +6,7 @@ namespace NumberSort;
 public class App
 {
     private const string InputCsv = "PhoneNumbers-8-digits.csv";
-    private const string OutputCsv = "Output.csv";
+    private const string OutputCsv = "PhoneNumbers-8-digitsOutput.csv";
 
     public async Task RunAsync()
     {

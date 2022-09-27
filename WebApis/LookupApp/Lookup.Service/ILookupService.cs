@@ -1,6 +1,8 @@
-﻿namespace Lookup.Service;
+﻿using Lookup.Service.Models;
+
+namespace Lookup.Service;
 
 public interface ILookupService
 {
-    string GetStateByZipCode(string zipCode);
+    LookupResponse GetStateByZipCode(string zipCode);
 }

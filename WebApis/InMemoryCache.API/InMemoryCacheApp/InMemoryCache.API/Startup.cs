@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Lookup.Api.Middleware;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,6 +51,8 @@ public class Startup
         app.UseSwaggerUI(x => { x.SwaggerEndpoint("v1/swagger.json", $"{SwaggerDocTitle} {SwaggerDocVersion}"); });
 
         #endregion
+
+        app.UseMiddleware(typeof(ExceptionHandling));
 
         app.UseHttpsRedirection();
         app.UseRouting();

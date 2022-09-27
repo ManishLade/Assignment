@@ -18,13 +18,9 @@ public class StateLookupController : ControllerBase
     [Route("/api/states/lookup/{zipCode}")]
     public IActionResult Get(string zipCode)
     {
-        try
-        {
-            return Ok(_lookupService.GetStateByZipCode(zipCode));
-        }
-        catch (Exception)
-        {
-            return StatusCode(500);
-        }
+        var result = _lookupService.GetStateByZipCode(zipCode);
+        return result.StatusCode == System.Net.HttpStatusCode.OK 
+            ? Ok(result.State) 
+            : StatusCode((int)result.StatusCode, result.ErrorMessage);
     }
 }

@@ -1,8 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using InsurancePlanForPatient;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using InsurancePlanForPatient;
 
 var services = new ServiceCollection();
 services.AddTransient<App>();
@@ -14,5 +14,3 @@ Log.Logger = new LoggerConfiguration()
 Log.Information("Console started");
 var serviceProvider = services.BuildServiceProvider();
 await serviceProvider.GetService<App>().RunAsync();
-
-

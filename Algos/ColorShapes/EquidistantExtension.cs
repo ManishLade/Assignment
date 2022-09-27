@@ -16,8 +16,10 @@ public static class EquidistantExtension
 
         foreach (var (item, index) in colorGroup.Select((item, i) => (item, i)))
             if (index == 0)
+            {
                 foreach (var y in item)
                     colors.Add(y);
+            }
             else
             {
                 var arrList = item.ToArray();

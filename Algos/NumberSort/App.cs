@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using CsvUtility;
-using System.Linq;
 
 namespace NumberSort;
+
 public class App
 {
     private const string InputCsv = "PhoneNumbers-8-digits.csv";
@@ -15,7 +15,7 @@ public class App
 
         var data = await CsvUtilityHelper.GetDataFromInputCsv<PhoneNumberCsv>(inputCsvPath);
         var numbers = data.Select(x => x.PhoneNumber).ToArray();
-        
+
         var stopWatch = Stopwatch.StartNew();
         //calling extension method to sort array 
         var sortedArray = numbers.SortArray(0, numbers.Length - 1);
@@ -29,6 +29,6 @@ public class App
         Console.WriteLine($"Built in Quick sort execution time:{stopWatch.Elapsed.TotalSeconds}");
 
         var outputFilePath = Path.Combine(path, OutputCsv);
-        CsvUtilityHelper.WriteOutPutCsv<int>(outputFilePath, sortedArray);
+        CsvUtilityHelper.WriteOutPutCsv(outputFilePath, sortedArray);
     }
 }

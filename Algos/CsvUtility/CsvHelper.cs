@@ -7,7 +7,7 @@ namespace CsvUtility;
 public static class CsvUtilityHelper
 {
     /// <summary>
-    /// Gets the list from input CSV.
+    ///     Gets the list from input CSV.
     /// </summary>
     /// <param name="inputFilePath">The input file path.</param>
     /// <returns></returns>
@@ -19,8 +19,8 @@ public static class CsvUtilityHelper
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 try
-                {   
-                    var records =  csv.GetRecordsAsync<T>();
+                {
+                    var records = csv.GetRecordsAsync<T>();
                     result = await records.ToListAsync();
                 }
                 catch (Exception)
@@ -34,7 +34,7 @@ public static class CsvUtilityHelper
     }
 
     /// <summary>
-    /// Write the output to the csv file
+    ///     Write the output to the csv file
     /// </summary>
     /// <param name="outputFilePath"></param>
     /// <param name="csvObjects"></param>
